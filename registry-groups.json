@@ -1,0 +1,15 @@
+{
+  "servers": {
+    "law-bench": ["legal"],
+    "fd-open-data-mcp": ["analysts"],
+    "fd-cn-report": ["analysts"],
+    "fd-daas-mcp": ["analysts"]
+  },
+  "skills": {
+    "legal-contract-workflow": ["legal"],
+    "legal-case-workflow": ["legal"],
+    "stock-research-workflow": ["analysts"],
+    "china-macro-brief-workflow": ["analysts"]
+  },
+  "agents": {}
+}

@@ -1,0 +1,43 @@
+{
+  "agents": [
+    {
+      "id": "pack-contract-reviewer",
+      "type": "agent-remote",
+      "mode": "chat",
+      "name": "合同审查官",
+      "description": "法律-合同包对话入口，配合 legal-contract-workflow 技能使用",
+      "icon": "scale",
+      "baseUrl": "https://token.finddatatech.cloud/v1",
+      "model": "deepseek-v4-pro",
+      "apiKeyEnv": "FD_TOKEN_API_KEY",
+      "tags": ["法律", "合同"],
+      "roles": ["legal"]
+    },
+    {
+      "id": "pack-case-analyst",
+      "type": "agent-remote",
+      "mode": "chat",
+      "name": "案件分析师",
+      "description": "法律-案件包对话入口，配合 legal-case-workflow 技能使用",
+      "icon": "gavel",
+      "baseUrl": "https://token.finddatatech.cloud/v1",
+      "model": "deepseek-v4-pro",
+      "apiKeyEnv": "FD_TOKEN_API_KEY",
+      "tags": ["法律", "诉讼"],
+      "roles": ["legal"]
+    },
+    {
+      "id": "pack-industry-analyst",
+      "type": "agent-remote",
+      "mode": "chat",
+      "name": "行业分析师",
+      "description": "数据-股票/中国经济包对话入口，配合 stock-research-workflow / china-macro-brief-workflow 技能使用",
+      "icon": "line-chart",
+      "baseUrl": "https://token.finddatatech.cloud/v1",
+      "model": "deepseek-v4-pro",
+      "apiKeyEnv": "FD_TOKEN_API_KEY",
+      "tags": ["金融", "宏观"],
+      "roles": ["analysts"]
+    }
+  ]
+}
