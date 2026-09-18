@@ -8,7 +8,7 @@
       "description": "法律-合同包对话入口，配合 legal-contract-workflow 技能使用",
       "icon": "scale",
       "baseUrl": "https://token.finddatatech.cloud/v1",
-      "model": "deepseek-v4-pro",
+      "model": "deepseek-v4-flash-0731",
       "apiKeyEnv": "FD_TOKEN_API_KEY",
       "tags": ["法律", "合同"],
       "roles": ["legal"]
@@ -21,7 +21,7 @@
       "description": "法律-案件包对话入口，配合 legal-case-workflow 技能使用",
       "icon": "gavel",
       "baseUrl": "https://token.finddatatech.cloud/v1",
-      "model": "deepseek-v4-pro",
+      "model": "deepseek-v4-flash-0731",
       "apiKeyEnv": "FD_TOKEN_API_KEY",
       "tags": ["法律", "诉讼"],
       "roles": ["legal"]
@@ -34,7 +34,7 @@
       "description": "数据-股票/中国经济包对话入口，配合 stock-research-workflow / china-macro-brief-workflow 技能使用",
       "icon": "line-chart",
       "baseUrl": "https://token.finddatatech.cloud/v1",
-      "model": "deepseek-v4-pro",
+      "model": "deepseek-v4-flash-0731",
       "apiKeyEnv": "FD_TOKEN_API_KEY",
       "tags": ["金融", "宏观"],
       "roles": ["analysts"]
