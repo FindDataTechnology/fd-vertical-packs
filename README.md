@@ -1,4 +1,5 @@
 # fd-vertical-packs
+> **Constellation (萬星) product line** · the vertical-pack ecosystem of [FindData](https://www.finddatatech.cloud/products/constellation) — industry entry skills + cloud agent catalog.
 
 Vertical pack assets for the FindData AI platform (`craw.finddatatech.cloud`) and its
 MCP registry market (`mcp.finddatatech.cloud`).
