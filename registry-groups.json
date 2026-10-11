@@ -1,15 +1,34 @@
 {
   "servers": {
-    "law-bench": ["legal"],
-    "fd-open-data-mcp": ["analysts"],
-    "fd-cn-report": ["analysts"],
-    "fd-daas-mcp": ["analysts"]
+    "law-bench": [
+      "legal"
+    ],
+    "fd-open-data-mcp": [
+      "analysts"
+    ],
+    "fd-cn-report": [
+      "analysts"
+    ],
+    "fd-daas-mcp": [
+      "analysts"
+    ],
+    "fd-text-core": [
+      "analysts"
+    ]
   },
   "skills": {
-    "legal-contract-workflow": ["legal"],
-    "legal-case-workflow": ["legal"],
-    "stock-research-workflow": ["analysts"],
-    "china-macro-brief-workflow": ["analysts"]
+    "legal-contract-workflow": [
+      "legal"
+    ],
+    "legal-case-workflow": [
+      "legal"
+    ],
+    "stock-research-workflow": [
+      "analysts"
+    ],
+    "china-macro-brief-workflow": [
+      "analysts"
+    ]
   },
   "agents": {}
 }
