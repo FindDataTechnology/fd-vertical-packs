@@ -10,9 +10,9 @@ description: 法律概念结构化图解。当用户要解释某个法律概念/
   source_license: MIT
   adapted_by: 识律/谦面 adapt-legal-skills-to-facet-presets
   data_binding: mcp__fd-legal-search-mcp__law_reference（主路径）
-  optional_binding: mcp__fd-find-data-business-mcp__legal_docs_search, mcp__fd-find-data-business-mcp__legal_docs_read（已接线的语料通道，可选增强，不可用不阻塞）
+  optional_binding: mcp__fd-legal-search-mcp__legal_docs_search, mcp__fd-legal-search-mcp__legal_docs_read（已接线的语料通道，可选增强，不可用不阻塞；business-mcp 侧同名工具等价可用）
   改述说明：方法论取自上列 MIT 源（要件拆解、来源采信层级、强制核验触发、防编造），
-  数据获取环节已替换为自有法规目录（32,275 部）与五源语料库（29,958 篇）；
+  数据获取环节已替换为自有法规目录（32,296 部）与五源语料库（47,261 篇）；
   源文本版权归原作者，本改编件按 MIT 条款保留上述声明。
 -->
 
@@ -28,21 +28,19 @@ description: 法律概念结构化图解。当用户要解释某个法律概念/
 
 | server | 工具 | 数据源 | 作用 |
 |---|---|---|---|
-| `fd-legal-search-mcp` | `law_reference` | 法规目录（32,275 部） | **条级引用解析**——把「《民法典》第三百一十一条」解析到条级定位（**主路径，图解骨架唯一依赖**） |
+| `fd-legal-search-mcp` | `law_reference` | 法规目录（32,296 部） | **条级引用解析**——把「《民法典》第三百一十一条」解析到条级定位（**主路径，图解骨架唯一依赖**） |
 
-> **语料检索通道说明**：五源语料（29,958 篇）有两条同名工具——`fd-find-data-business-mcp` 侧**已接线**（可选增强首选，调 `mcp__fd-find-data-business-mcp__legal_docs_search` / `legal_docs_read`）；`fd-legal-search-mcp` 侧为骨架态（`not_wired` 7.1）且 manifest 定级 `internal`，**不得作为依赖**。
+> **语料检索通道说明**：五源语料（**47,261 篇**）有两条同名工具，**两侧均已接线**（2026-10-19 起），语义等价（排序、来源封闭词表、正文缺失时的诚实返回一致）。任选其一即可；同一会话内**只用一条**，不要交叉比对两边的同名字段。
 > 语料检索在本技能中只作**可选增强**：仅在调用成功时补充权威解读/公报说理；调用失败时**照常交付**基于 `law_reference` 的要件骨架，并在交付末尾注明"未取得语料补充说理"。**不得因语料不可用而阻塞图解交付。**
 
-五源语料代码（封闭词表，`source` 参数非法值会被如实拒绝）：`gov-rules`（部门/地方规章库）、`mfa-treaty`（条约库）、`ccdi-supervisory`（纪检监察法规）、`rmfyalk`（人民法院案例库）、`party-regulation`（党内法规）——仅在语料可用时使用。
+五源语料代码（**封闭词表，必须逐字使用**，`source` 参数非法值会被如实拒绝并返回 `valid_sources`）：`gov-rules-library`（部门/地方规章库）、`mfa-treaty-library`（条约库）、`ccdi-supervisory-regulations`（纪检监察法规）、`rmfyalk-case-library`（人民法院案例库）、`party-regulation-library`（党内法规）。
 
-不确定工具是否在册时先用 `tool_search` 查询确认，再用**精确完整工具名**调用，不得臆造工具名。
+（工具在册确认、调用失败集中披露的通用规则见正文末尾「内核不变式」第一、二节，本节省略。）
 
-**未连接降级**（两种情形）
+**未连接降级**（按内核第二节形态甲执行；本技能落地口径两种情形）
 
-1. **`fd-legal-search-mcp` 未连接**：明示"**未连接法条与语料数据源（fd-legal-search-mcp）**"，不产出正式图解。改为给出概念骨架（要件/例外的**待核实清单**）并**通篇标注"以下要件与条文未经检索核实，来自模型知识，使用前必须核对现行有效性"**，同时给出建议检索渠道与检索式。
-2. **连接但某环节查空**：该环节标 `未核实`，并在"来源与核验"节列出，**不得以模型知识冒充已核验结论填充该格**。
-
-**调用失败**：不在正文每处刷警告；在报告末尾"来源与核验"节统一披露未经外部源核实的要件清单，并提示用户检查 MCP 连接。
+1. **`fd-legal-search-mcp` 未连接**：不产出正式图解，改为给出概念骨架（要件/例外的**待核实清单**），同时给出建议检索渠道与检索式。
+2. **连接但某环节查空**（本技能专属情形）：该环节标 `未核实`并在"来源与核验"节列出，**不得以模型知识冒充已核验结论填充该格**。
 
 ---
 
@@ -69,7 +67,7 @@ mcp__fd-legal-search-mcp__law_reference(citation="《中华人民共和国民法
 
 解析要点：
 
-- 输入形态需为「《标题》」或「标题第X条」；识别不了时工具如实返回 `not_found`（含可读原因），**绝不猜测**——如实转述"该引用无法在法规目录（32,275 部）中解析"，请用户核对法名或条号。
+- 输入形态需为「《标题》」或「标题第X条」；识别不了时工具如实返回 `not_found`（含可读原因），**绝不猜测**——如实转述"该引用无法在法规目录（32,296 部）中解析"，请用户核对法名或条号。
 - 一文多要件时**逐要件分别解析**，不要只解析母条。
 - 解析不出来时，改用概念关键词在法规目录侧检索；仍无命中即如实报空。
 
@@ -87,13 +85,15 @@ mcp__fd-legal-search-mcp__law_reference(citation="《中华人民共和国民法
 条文给出的是规范骨架，五源语料补**适用口径与权威解读**：
 
 ```
-mcp__fd-legal-search-mcp__legal_docs_search(title_query=<概念关键词>, source=<五源代码，可选>, doc_type=<可选>, limit=50)
-mcp__fd-legal-search-mcp__legal_docs_read(doc_id=<上一步返回的 doc_id>)
+mcp__fd-find-data-business-mcp__legal_docs_search(title_query=<概念关键词>, source=<五源代码，可选>, doc_type=<可选>, limit=50)
+mcp__fd-find-data-business-mcp__legal_docs_read(doc_id=<上一步返回的 doc_id>)
 ```
+
+> 通道纪律：语料走**已接线通道**（见阶段 0 的通道说明），`fd-find-data-business-mcp` 与 `fd-legal-search-mcp` 两侧皆可，任选其一并保持整轮一致。
 
 用途与取词纪律：
 
-- 优先取 `rmfyalk`（人民法院案例库）看裁判口径，取 `gov-rules` 看规章层面的细化规定。
+- 优先取 `rmfyalk-case-library`（人民法院案例库）看裁判口径，取 `gov-rules-library` 看规章层面的细化规定。
 - 语料命中的表述只作**理解线索**，不得直接改写为要件——要件以条文为准。
 - 语料缺正文（`legal_docs_read` 标注未取到正文）时如实写"正文缺失"，**不得编造内容**。
 
@@ -189,8 +189,8 @@ R2 ……
 4. **权威解读**（如有）。
 5. **来源与核验**：MCP 接入状态、检索时间戳、三轮检索式与命中数、未经外部源核实的命题清单、来源采信层级说明。
 
-**硬约束**：条文文本与条号 MUST 来自 `law_reference` 的实际返回，**禁止凭记忆改写条文内容或给出未核验条号**；无命中即如实报空并说明，**禁止生成任何看似真实的条文或解读**。
+（防编造与无命中报空的通用硬约束见正文末尾「内核不变式」第三节，本节省略。）
 
 ---
 
-> **免责声明**：本技能由 AI 辅助生成，输出仅供执业律师审阅，不构成法律意见，不能替代执业判断。法条、案号、统计基数均来自标注数据源的实时检索；数据源未连接时输出为未经核实的推理草稿。
+（免责声明的通用条款见正文末尾「内核不变式」第四节，由构建期注入，本处不再重复。）
