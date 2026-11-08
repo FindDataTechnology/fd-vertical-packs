@@ -1,0 +1,11 @@
+{
+  "name": "finddata-coding-crew",
+  "version": "0.1.0",
+  "description": "A five-role coding crew with typed contracts: planner slices the work, explorer and implementer run in parallel, merger carries every branch constraint forward, verifier gates the result. Ships the agent-graph-gate skill that checks the collaboration graph's shape before dispatch.",
+  "description_i18n": {
+    "zh-CN": "五角色协作编码班底，带类型化契约：规划者切片、侦察与实现并行、合并者承接各分支约束、验收者把关；附带派发前检查协作图形状的 agent-graph-gate 技能。"
+  },
+  "author": { "name": "FindData" },
+  "skills": "./skills",
+  "agents": "agents"
+}

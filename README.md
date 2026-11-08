@@ -15,4 +15,24 @@ MCP registry market (`mcp.finddatatech.cloud`).
 - `registry-groups.json` — reference copy of the platform's role-visibility mapping
   (the live copy is the ConfigMap in fd-infra-deploy).
 
+## ZCode plugin marketplace (`marketplace.json`)
+
+`marketplace.json` at this repo's root declares a plugin marketplace you can add
+directly in ZCode: **Settings → Plugin Marketplace → Add → Add Plugin Marketplace**
+→ paste `https://github.com/FindDataTechnology/fd-vertical-packs`.
+
+- `plugins/finddata-coding-crew/` — a five-role coding crew (planner, explorer,
+  implementer, merger, verifier). Each role's `tools` and `thoughtLevel` live in the
+  agent frontmatter, so the host enforces them; `skills` / MCP / memory scope are
+  declared in the body and are advisory only, because this host has no per-agent
+  dimension for them.
+- The crew's `agent-graph-gate` skill is also published standalone under
+  `skills/agent-graph-gate/`: it checks an agent collaboration graph's shape before
+  dispatch — port type compatibility, effect declarations and spend guards, retry
+  idempotency, and whether the merge point drops a branch's constraint.
+
+Source of truth for the crew roster is the `fd-agent-graph` package's
+`roster/finddata-coding.yaml`; `plugins/finddata-coding-crew/agents/*.md` are
+generated from it (`fd-agent-graph export`), and a unit test fails if they drift.
+
 Demo playbook: `docs/vertical-packs.md` in the paas repo (fd-craw-private).

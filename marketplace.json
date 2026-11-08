@@ -1,0 +1,19 @@
+{
+  "name": "finddata-official",
+  "plugins": [
+    {
+      "name": "finddata-coding-crew",
+      "source": "./plugins/finddata-coding-crew",
+      "version": "0.1.0",
+      "description": "Five-role coding crew with typed contracts, plus a pre-dispatch graph shape check.",
+      "displayName": "FindData Coding Crew",
+      "displayName_i18n": {
+        "zh-CN": "寻数协作编码班底"
+      },
+      "description_i18n": {
+        "zh-CN": "五角色协作编码班底：类型化端口契约 + 派发前的图形状检查。规划者切片、侦察与实现并行、合并者承接约束、验收者把关。"
+      },
+      "category": "developer-tools"
+    }
+  ]
+}
