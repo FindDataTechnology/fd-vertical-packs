@@ -21,11 +21,17 @@ MCP registry market (`mcp.finddatatech.cloud`).
 directly in ZCode: **Settings → Plugin Marketplace → Add → Add Plugin Marketplace**
 → paste `https://github.com/FindDataTechnology/fd-vertical-packs`.
 
-- `plugins/finddata-coding-crew/` — a five-role coding crew (planner, explorer,
-  implementer, merger, verifier). Each role's `tools` and `thoughtLevel` live in the
-  agent frontmatter, so the host enforces them; `skills` / MCP / memory scope are
-  declared in the body and are advisory only, because this host has no per-agent
-  dimension for them.
+- `plugins/finddata-coding-crew/` — eight roles, spanning two crews: the v2
+  five-role crew (planner, explorer, implementer, merger, verifier) and the v3
+  seven-role crew (relay, planner, contractor, implementer, sentry, merger,
+  verifier). `relay` measures the model path and hands out the round's concurrency
+  width; `contractor` pins the public interface to one machine-readable contract;
+  `sentry` gates the merge on artifacts that actually exist.
+  `tools`, `disallowedTools`, `skills`, `mcpServers`, `thoughtLevel` and `color`
+  are agent-frontmatter fields the host parses and enforces. **Memory authority is
+  not one of them** — it is stated in the body as prose (this host's `memory` field
+  selects a directory scope, not an authority), so treat that line as guidance
+  rather than as an enforced constraint.
 - The crew's `agent-graph-gate` skill is also published standalone under
   `skills/agent-graph-gate/`: it checks an agent collaboration graph's shape before
   dispatch — port type compatibility, effect declarations and spend guards, retry
