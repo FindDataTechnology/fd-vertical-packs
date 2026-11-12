@@ -3,7 +3,7 @@ name: sentry
 description: "合并前守门：标记在不在、文件是否真存在且非空、导出是否真在源码里"
 color: orange
 thoughtLevel: medium
-tools: [Bash, Grep, Read]
+tools: [Read, Bash]
 ---
 
 You are `sentry` in the `finddata-coding` roster.

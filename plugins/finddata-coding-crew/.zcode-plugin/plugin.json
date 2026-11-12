@@ -1,9 +1,9 @@
 {
   "name": "finddata-coding-crew",
-  "version": "0.2.1",
-  "description": "Eight roles spanning the v2 five-role crew and the v3 seven-role crew: relay measures the model path and hands out this round's concurrency width, contractor pins the public interface to one machine-readable contract, sentry gates the merge on artifacts that actually exist, planner slices the work, explorer and implementer run in parallel, merger carries every branch constraint forward, verifier gates the result. Ships the agent-graph-gate skill that checks the collaboration graph's shape before dispatch.",
+  "version": "0.2.2",
+  "description": "The v2 five-role coding crew (planner, explorer, implementer, merger, verifier) plus the three roles team-v3 adds: relay measures the model path and hands out the round's concurrency width, contractor pins the public interface to one machine-readable contract, sentry gates the merge on artifacts that actually exist. Tool grants follow the v2 roster. team-v3 narrows some of those grants and gives planner Glob, so for a pure v3 crew generate the definitions with `fd-agent-graph export --manifest roster/team-v3.yaml` rather than reusing these. Ships the agent-graph-gate skill that checks a collaboration graph's shape before dispatch.",
   "description_i18n": {
-    "zh-CN": "八个角色，覆盖 v2 五角色与 v3 七角色两套班底：探路者量模型路径并给出本轮并发宽度、契约官把公开接口钉成一份机器可读契约、守门者在合并前验产物真在；规划者切片、侦察与实现并行、合并者承接各分支约束、验收者把关。附带派发前检查协作图形状的 agent-graph-gate 技能。"
+    "zh-CN": "v2 五角色编码班底（规划者、侦察、实现、合并、验收）+ team-v3 新增的三个角色：探路者量模型路径并给出本轮并发宽度、契约官把公开接口钉成一份机器可读契约、守门者在合并前验产物真在。工具授权以 v2 名册为准；v3 对其中四个角色收窄了授权、并给规划者加了 Glob，所以纯 v3 班底请用 `fd-agent-graph export --manifest roster/team-v3.yaml` 生成，别直接复用这里的定义。附带派发前检查协作图形状的 agent-graph-gate 技能。"
   },
   "author": {
     "name": "FindData"

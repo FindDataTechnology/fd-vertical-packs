@@ -21,12 +21,28 @@ MCP registry market (`mcp.finddatatech.cloud`).
 directly in ZCode: **Settings → Plugin Marketplace → Add → Add Plugin Marketplace**
 → paste `https://github.com/FindDataTechnology/fd-vertical-packs`.
 
-- `plugins/finddata-coding-crew/` — eight roles, spanning two crews: the v2
-  five-role crew (planner, explorer, implementer, merger, verifier) and the v3
-  seven-role crew (relay, planner, contractor, implementer, sentry, merger,
-  verifier). `relay` measures the model path and hands out the round's concurrency
-  width; `contractor` pins the public interface to one machine-readable contract;
+- `plugins/finddata-coding-crew/` — the v2 five-role crew (planner, explorer,
+  implementer, merger, verifier) **plus** the three roles team-v3 adds: `relay`
+  measures the model path and hands out the round's concurrency width,
+  `contractor` pins the public interface to one machine-readable contract,
   `sentry` gates the merge on artifacts that actually exist.
+
+  **One agent directory cannot serve both rosters.** team-v3 narrows some grants
+  (merger `[Read, Write]`, verifier/sentry `[Read, Bash]`, implementer without
+  `MultiEdit`) and gives planner `Glob`, while the v2 roster declares the wider
+  sets these files carry. So the plugin's tool grants follow **v2**, and
+  `fd-agent-graph bind --check-host` will report `binding.host.tools-drift` for the
+  four overlapping roles if you point it at `roster/team-v3.yaml` — that is a
+  roster mismatch, not a broken agent. For a pure v3 crew, generate the
+  definitions instead:
+
+  ```bash
+  cd fd-agent-graph
+  PYTHONPATH=. python3 -m fd_agent_graph.cli export --manifest roster/team-v3.yaml --out ./agents-v3
+  ```
+
+  Check whichever pairing you ship: `bind --manifest <roster> --host-agents <dir>`
+  must report 0 errors before publishing.
   `tools`, `disallowedTools`, `skills`, `mcpServers`, `thoughtLevel` and `color`
   are agent-frontmatter fields the host parses and enforces. **Memory authority is
   not one of them** — it is stated in the body as prose (this host's `memory` field

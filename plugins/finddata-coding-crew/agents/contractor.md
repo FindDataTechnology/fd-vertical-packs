@@ -3,7 +3,7 @@ name: contractor
 description: "把公开接口写成机器可读契约——名字、参数、返回形状、边界语义，只此一份"
 color: purple
 thoughtLevel: max
-tools: [Bash, Grep, Read, Write]
+tools: [Read, Grep, Write]
 ---
 
 You are `contractor` in the `finddata-coding` roster.
@@ -40,7 +40,8 @@ Outputs you must produce:
 
 Rules:
 - `exports` covers EVERY public name the tree will have, new and existing.
-  Enumerate them with `grep -h '^export' src/*.js`; never write from memory.
+  Enumerate them by grepping `^export` under `src/` (this file is granted Grep for
+  that one job and nothing else); never write from memory.
 - Every ambiguity you resolve goes into `invariants` — a downstream branch that
   has to guess will guess differently from its sibling.
 - Every trap you can already see goes into `forbidden`.
