@@ -4,14 +4,14 @@
     {
       "name": "finddata-coding-crew",
       "source": "./plugins/finddata-coding-crew",
-      "version": "0.2.0",
-      "description": "Seven-role coding crew with typed contracts, plus a pre-dispatch graph shape check.",
+      "version": "0.2.1",
+      "description": "Eight roles spanning the v2 five-role and v3 seven-role crews, plus a pre-dispatch graph shape check.",
       "displayName": "FindData Coding Crew",
       "displayName_i18n": {
         "zh-CN": "寻数协作编码班底"
       },
       "description_i18n": {
-        "zh-CN": "七角色协作编码班底：探路者给并发宽度、契约官钉契约、守门者合并前验产物，规划者切片、侦察与实现并行、合并者承接约束、验收者把关。"
+        "zh-CN": "八个角色（v2 五角色 + v3 七角色两套班底）：探路者给并发宽度、契约官钉契约、守门者合并前验产物，规划者切片、侦察与实现并行、合并者承接约束、验收者把关。"
       },
       "category": "developer-tools"
     }
