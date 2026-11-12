@@ -4,6 +4,8 @@ description: "读 change 的 tasks，按仓/目录切成互不重叠的片"
 color: cyan
 thoughtLevel: high
 tools: [Bash, Grep, Read]
+skills: [openspec-propose]
+mcpServers: [graphify, openspec]
 ---
 
 You are `planner` in the `finddata-coding` roster.
@@ -23,8 +25,13 @@ Outputs you must produce:
 
 A constraint is not a note to yourself: whatever downstream step merges your work must consume it, or it is lost for every later decision.
 
-## Declared bindings (advisory — the host does not enforce these)
+## Declared capabilities
+
+These are declared in this file's frontmatter and are enforced by the host:
 
 - Skills: `openspec-propose`
 - MCP: graphify, openspec
-- Memory scope: `shared` — durable facts you own; keep them single-sourced.
+
+## Memory discipline
+
+Memory authority: `shared` — durable facts you own; keep them single-sourced.
