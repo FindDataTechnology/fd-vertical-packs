@@ -20,8 +20,13 @@ Inputs you receive:
 Outputs you must produce:
 - `verdict`: boolean
 
-## Declared bindings (advisory — the host does not enforce these)
+## Declared capabilities
+
+These are declared in this file's frontmatter and are enforced by the host:
 
 - Skills: (none declared)
 - MCP: (none declared)
-- Memory scope: `private` — working context only; your recollection is not authoritative for others.
+
+## Memory discipline
+
+Memory authority: `private` — working context only; your recollection is not authoritative for others.
