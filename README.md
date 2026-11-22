@@ -4,12 +4,19 @@
 Vertical pack assets for the FindData AI platform (`craw.finddatatech.cloud`) and its
 MCP registry market (`mcp.finddatatech.cloud`).
 
-- `skills/<name>/SKILL.md` — four industry entry skills (source of truth; registered
-  into the registry, installed from the platform Store):
+- `skills/<name>/SKILL.md` — 42 skills (source of truth; most are registered into the
+  registry and installed from the platform Store). Four are the originally documented
+  industry entry points:
   - `legal-contract-workflow` — 法律-合同 (law-bench MCP)
   - `legal-case-workflow` — 法律-案件 (fd-legal-search-mcp when available)
   - `stock-research-workflow` — 数据-股票 (fd-open-data-mcp + fd-cn-report)
   - `china-macro-brief-workflow` — 数据-中国经济 (fd-open-data-mcp + fd-cn-report)
+
+  三个技能**有意不登记**（2026-11-22 盘点结论）：`format-conversion-elementized`、
+  `legal-corpus-explorer`、`statute-lifecycle-tracker`。它们是 2026-11-10「识律 16 技能」
+  那批进来的完整技能，但没有任何 pack / plugin 引用它们——registry 里加进去只会给冷启动
+  增加负担。等某个 pack 收编时再注册。`agent-graph-gate` 同理：它是
+  `plugins/finddata-coding-crew/` 的组成部分，随那个 plugin 分发。
 - `agents.json` — cloud agent catalog (`AGENTS_CONFIG_URL`): three chat-mode pack
   agents. Credentials are env-var references only; no secrets in this repo.
 - `registry-groups.json` — reference copy of the platform's role-visibility mapping
